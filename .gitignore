@@ -1,0 +1,19 @@
+mlflow_data/*
+!mlflow_data/.gitkeep
+submission/
+submission.zip
+__pycache__/
+*.pyc
+.pytest_cache/
+backups/
+
+# course materials (not published)
+RUBRIC.md
+HINT.md
+RUBRIC
+HINT
+
+# local / generated
+.DS_Store
+.venv/
+Claude outputs/
