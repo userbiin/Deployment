@@ -26,13 +26,10 @@ and used MLflow as the record of every step.
 ## Overview
 
 - **Period** : 2026.10 – 2026.11 · Boise State University, CS 459 Machine Learning in Production
-- **Type** : individual assignment (Assignment 3: Deployment Patterns)
 - **Data** : 119,390 real bookings at a city hotel and a resort hotel, arrivals July 2015 – August 2017
 - **Models** : the inherited champion is a logistic regression; the challenger is a `HistGradientBoostingClassifier`
-- **Outcome** : the challenger passed the promotion gate, but I recommended **holding** the release (see [Final Decision](#final-decision-hold))
 
-The starter project (data loading, metrics, the history of past runs, tests and the drill) was provided by the instructor.
-What I wrote is listed in [What I Built](#what-i-built). The original assignment text is in [`README/SPEC.md`](README/SPEC.md).
+The original assignment text is in [`README/SPEC.md`](README/SPEC.md).
 
 <br>
 
@@ -40,7 +37,7 @@ What I wrote is listed in [What I Built](#what-i-built). The original assignment
 
 The hotel group's revenue team uses a model to flag bookings that are likely to cancel. A flagged booking gets a deposit request, and the hotel may overbook against it. Both decisions cost money when the flag is wrong: a guest who was going to show up gets hassled for a deposit, or arrives to a full hotel and has to be sent somewhere else. The hotels have been clear: **a flag has to be right at least 80% of the time.**
 
-The model in production is a logistic regression that flags a booking when its cancellation probability is **0.65** or higher. The person who built it has left, and the team's MLflow server holds everything that was ever recorded about it, which turns out to be very little. The story is set in **spring 2017**.
+The model in production is a logistic regression that flags a booking when its cancellation probability is **0.65** or higher. The person who built it has left, and the team's MLflow server holds everything that was ever recorded about it, which turns out to be very little.
 
 <br>
 
