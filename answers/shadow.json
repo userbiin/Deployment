@@ -1,0 +1,29 @@
+{
+  "champion_version": "1",
+  "challenger_version": "2",
+  "as_of": "2017-04-30",
+  "n": 17621,
+  "champion_flag_rate": 0.20492594063901026,
+  "challenger_flag_rate": 0.3219454060495999,
+  "disagreement_rate": 0.14743771636116,
+  "disagreement_by_group": {
+    "hotel.city": 0.15587337297123574,
+    "hotel.resort": 0.12714975845410628,
+    "segment.online_ta": 0.22059765208110993,
+    "segment.offline_ta_to": 0.07702984038861901,
+    "segment.groups": 0.07610921501706484,
+    "segment.direct": 0.0427710843373494,
+    "segment.corporate": 0.022108843537414966
+  },
+  "labeled_fraction": 0.31252482832983375,
+  "labeled": {
+    "champion": {
+      "precision": 0.9392565729827742,
+      "recall": 0.43023255813953487
+    },
+    "challenger": {
+      "precision": 0.8542116630669546,
+      "recall": 0.6569767441860465
+    }
+  }
+}

@@ -6,6 +6,8 @@ The plumbing is done for you: reading the data, scoring, building the report in 
 shape SPEC.md asks for, writing answers/shadow.json, and logging the run. You write the
 three functions marked TODO.
 """
+# AI Used : drafted by Claude, reviewed and run by me
+
 import argparse
 import json
 from pathlib import Path
@@ -18,6 +20,7 @@ from features import FEATURES, load, period
 from metrics import GROUPS
 from tracking import EXPERIMENT, MODEL_NAME
 
+
 OUT = Path(__file__).resolve().parents[1] / "answers" / "shadow.json"
 
 
@@ -27,7 +30,11 @@ def load_by_alias(client, alias):
     Load the model by its alias, not by a version number. The threshold is the
     "threshold" tag on that version, as a float.
     """
-    raise NotImplementedError("Part 4: load_by_alias")
+    mv = client.get_model_version_by_alias(MODEL_NAME, alias)
+    if "threshold" not in mv.tags:
+        raise SystemExit(f"v{mv.version} (@{alias}) has no threshold tag, so it can't be run")
+    model = mlflow.sklearn.load_model(f"models:/{MODEL_NAME}@{alias}")  # by alias, never by version number
+    return mv.version, model, float(mv.tags["threshold"])
 
 
 def disagreement(df, champion_flags, challenger_flags):
@@ -37,7 +44,9 @@ def disagreement(df, champion_flags, challenger_flags):
     by_group: the same share within each group of metrics.GROUPS, as {group_name: rate}.
     GROUPS maps each name to (column, value), e.g. "hotel.city": ("hotel", "City Hotel").
     """
-    raise NotImplementedError("Part 4: disagreement")
+    differ = champion_flags != challenger_flags  # True where exactly one of the two flags
+    by_group = {name: differ[(df[col] == value).to_numpy()].mean() for name, (col, value) in GROUPS.items()}
+    return differ.mean(), by_group
 
 
 def known_by(df, as_of):
@@ -46,7 +55,7 @@ def known_by(df, as_of):
     A booking's outcome is final once its arrival date has passed, so these are the
     bookings with an arrival date before `as_of`.
     """
-    raise NotImplementedError("Part 4: known_by")
+    return (df["arrival_date"] < as_of).to_numpy()
 
 
 def main(argv=None):

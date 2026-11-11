@@ -6,17 +6,17 @@
 #   random_split           trained and scored on a random split instead of by arrival date
 #   different_eval_period  scored on a different period than the holdout
 hgb-0130:
-  comparable: 
-  reason: 
+  comparable: false
+  reason: uses_outcome
 hgb-0206:
-  comparable: 
-  reason: 
+  comparable: false
+  reason: random_split
 hgb-0213:
-  comparable: 
-  reason: 
+  comparable: false
+  reason: post_booking_features
 hgb-0220:
-  comparable: 
-  reason: 
+  comparable: true
+  reason: ok
 hgb-0227:
-  comparable: 
-  reason: 
+  comparable: false
+  reason: different_eval_period

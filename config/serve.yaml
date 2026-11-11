@@ -1,3 +1,2 @@
-# Written by the deploy runbook on every release.
-model_uri: models:/cancellations/1
-threshold: 0.65
+# Not read by the service any more. The service follows @champion in the model registry,
+# and each version's "threshold" tag is the only place its threshold lives.
